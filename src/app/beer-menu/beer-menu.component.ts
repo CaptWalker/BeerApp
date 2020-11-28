@@ -28,7 +28,6 @@ export class BeerMenuComponent implements OnInit {
   getBeerList = () => {
     this.service.getBeerList().subscribe((response: Beer[]) => {
       this.beerList = response;
-      // console.log(this.beerList);
       this.getBeerImages();
     });
   }
@@ -36,7 +35,6 @@ export class BeerMenuComponent implements OnInit {
   getBeerImages = () => {
     this.service.getBeerImages().subscribe((response) => {
       this.beerImages = response;
-      // console.log(this.beerImages);
       this.finalBeerList();
     });
   }
@@ -46,7 +44,6 @@ export class BeerMenuComponent implements OnInit {
       const img = this.beerImages[Math.floor(Math.random() * this.beerImages.length)];
       item.image = img.image;
     }
-    // console.log(this.beerList);
     this.dataSource = new MatTableDataSource(this.beerList);
     this.dataSource.paginator = this.paginator;
     this.dataSource.filterPredicate = (data, filter: string): boolean => {
